@@ -4,40 +4,65 @@ body {
     background-color: brown;
 }
 
-p {
+/* p {
     display: flex; 
     
     justify-content: center;
     align-items: center; 
-}
+} */
 
 #canvas {
+    /* position: relative; */
     border: 1px solid black;
 }
 
 .menu {
+    display: block;
     position: relative;
+    height: 600px;
+    width: 800px;
+    margin: 0 auto;
 }
 button {
     position: absolute;
     background-color: grey;
     border: 1px solid black;
     font-family: 'MedievalSharp', cursive;
+    font-size: 30px;
 }
 .start-button {
     padding: 25px 120px;
-    font-size: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .help-button {
     padding: 10px 20px;
-    font-size: 30px;
-    right: 450px;
     bottom: 20px;
+    left: 20px;
+}
+
+.sfx-button, .music-button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.sfx-button {
+    bottom: 20px;
+    right: 20px;
+}
+
+.music-button {
+    bottom: 20px;
+    right: 100px;
 }
 
 .title {
     font-size: 3em;
     font-weight: 700;
     font-family: 'MedievalSharp', cursive;
+    display: block;
+    text-align: center;
 }
