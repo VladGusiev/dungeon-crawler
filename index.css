@@ -1,3 +1,4 @@
+/* FONT */
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 body {
@@ -5,7 +6,6 @@ body {
 }
 
 #canvas {
-    /* position: relative; */
     border: 1px solid black;
 }
 
@@ -17,7 +17,8 @@ body {
     margin: 0 auto;
 }
 
-/*  BUTONS */
+
+/*  BUTTONS */
 button {
     position: absolute;
     background-color: grey;
@@ -72,13 +73,13 @@ button {
 }
 
 #complete-level-header {
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
 }
 
 #complete-level-text {
-    top: 60%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%);
 }

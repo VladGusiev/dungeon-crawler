@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-
     
+    <title>Document</title>
 
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <p class="title">Dungeon Crawler</p>
+
+
+    <img id="player" width="50" height="50" src="visual/player.png" hidden="true">
+    <img id="nextLevel" width="50" height="50" src="visual/NextLevelWall.png" hidden="true">
+
 
     <p class = "menu">
         <canvas id="canvas" height="600" width="800"></canvas>
@@ -28,17 +32,28 @@
         
         <!-- text for retry screen -->
         <h1 id="complete-level-header">Congratulations</h1>
-        <p id="complete-level-text">You completed level in  xxx steps</p>
+        <p id="complete-level-text">You completed level!s</p>
     </p>
 
-    <audio id="menuIntro" src="./music/menuIntro.wav" autostart="true" type="audio/wav" onended="menuIntroEnded()"></audio>
+    <!-- menu/play soundtrack -->
+    <audio id="menuIntro" src="./music/menuIntro.wav" type="audio/wav" onended="menuIntroEnded()"></audio>
     <audio id="menuLoop" src="./music/menuLoop.wav" loop type="audio/wav"></audio>
     <audio id="playLoop" src="./music/playLoop.wav" loop type="audio/wav"></audio>
 
-    <script type="text/javascript" src="view.js"></script>
-    <script type="text/javascript" src="help-button.js"></script>
-    <script type="text/javascript" src="music-buttons.js"></script>
-    <script type="text/javascript" src="start-button.js"></script>
-    <script type="text/javascript" src="retry-button.js"></script>
+    <!-- //step sounds -->
+    <audio id="step1" src="./music/steps/step1.wav" type="audio/wav"></audio>
+    <audio id="step2" src="./music/steps/step2.wav" type="audio/wav"></audio>
+    <audio id="step3" src="./music/steps/step3.wav" type="audio/wav"></audio>
+
+
+    <script type="text/javascript" src="./view.js"></script>
+    <script type="text/javascript" src="./buttons/help-button.js"></script>
+    <script type="text/javascript" src="./buttons/music-buttons.js"></script>
+    <script type="text/javascript" src="./buttons/start-button.js"></script>
+    <script type="text/javascript" src="./buttons/retry-button.js"></script>
+    <script type="text/javascript" src="./controller/keyboard.js"></script>
+    <script type="text/javascript" src="./model/node.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/player.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/nextLevel.js"></script>
 </body>
 </html>
