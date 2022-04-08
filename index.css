@@ -4,13 +4,6 @@ body {
     background-color: brown;
 }
 
-/* p {
-    display: flex; 
-    
-    justify-content: center;
-    align-items: center; 
-} */
-
 #canvas {
     /* position: relative; */
     border: 1px solid black;
@@ -23,6 +16,8 @@ body {
     width: 800px;
     margin: 0 auto;
 }
+
+/*  BUTONS */
 button {
     position: absolute;
     background-color: grey;
@@ -30,6 +25,7 @@ button {
     font-family: 'MedievalSharp', cursive;
     font-size: 30px;
 }
+
 #start-button {
     padding: 25px 120px;
     top: 50%;
@@ -38,25 +34,53 @@ button {
 
 }
 
+#retry-button {
+    padding: 25px 120px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+}
+
 #help-button {
     padding: 10px 20px;
     bottom: 20px;
     left: 20px;
 }
 
-.sfx-button, .music-button {
-    border: 2px solid black;
+#sfx-button, #music-button {
+    border: 2px solid #C54B4B;
     background-color: rgba(0, 0, 0, 0);
+    color: #C54B4B;
 }
 
-.sfx-button {
+#sfx-button {
     bottom: 20px;
     right: 20px;
 }
 
-.music-button {
+#music-button {
     bottom: 20px;
     right: 100px;
+}
+
+/* CONGRATULATION SCREEN TEXT*/
+#complete-level-header, #complete-level-text {
+    display: none;
+    position: absolute;
+    font-family: 'MedievalSharp', cursive;
+}
+
+#complete-level-header {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#complete-level-text {
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .title {

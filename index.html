@@ -15,13 +15,30 @@
 
     <p class = "menu">
         <canvas id="canvas" height="600" width="800"></canvas>
+
         <button id="start-button">START</button>
+        
+        <button id="retry-button">RETRY</button>
+
         <button id="help-button">?</button>
-        <button class="sfx-button">SFX</button>
-        <button class="music-button">MUSIC</button>
+
+        <!-- buttons for music sfx controll -->
+        <button id="sfx-button">SFX</button>
+        <button id="music-button">MUSIC</button>
+        
+        <!-- text for retry screen -->
+        <h1 id="complete-level-header">Congratulations</h1>
+        <p id="complete-level-text">You completed level in  xxx steps</p>
     </p>
+
+    <audio id="menuIntro" src="./music/menuIntro.wav" autostart="true" type="audio/wav" onended="menuIntroEnded()"></audio>
+    <audio id="menuLoop" src="./music/menuLoop.wav" loop type="audio/wav"></audio>
+    <audio id="playLoop" src="./music/playLoop.wav" loop type="audio/wav"></audio>
 
     <script type="text/javascript" src="view.js"></script>
     <script type="text/javascript" src="help-button.js"></script>
+    <script type="text/javascript" src="music-buttons.js"></script>
+    <script type="text/javascript" src="start-button.js"></script>
+    <script type="text/javascript" src="retry-button.js"></script>
 </body>
 </html>
