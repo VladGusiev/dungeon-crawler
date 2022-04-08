@@ -30,7 +30,7 @@ button {
     font-family: 'MedievalSharp', cursive;
     font-size: 30px;
 }
-.start-button {
+#start-button {
     padding: 25px 120px;
     top: 50%;
     left: 50%;
@@ -38,14 +38,14 @@ button {
 
 }
 
-.help-button {
+#help-button {
     padding: 10px 20px;
     bottom: 20px;
     left: 20px;
 }
 
 .sfx-button, .music-button {
-    border: none;
+    border: 2px solid black;
     background-color: rgba(0, 0, 0, 0);
 }
 
