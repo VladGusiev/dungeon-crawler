@@ -16,11 +16,13 @@ function showHelpMenu() {
     if(isInMenu) {
         if(!infoDisplayed) {
             startButton.style.display = "none";
+            currentLevelText.style.display = "none";
             displayInfo();
             infoDisplayed = true;
         } else {
             ctx.clearRect(helpMenuX, helpMenuY, helpMenuW, helpMenuH);
             startButton.style.display = "block";
+            currentLevelText.style.display = "block";
             infoDisplayed = false;
         }
     } else if(isInRetry) {

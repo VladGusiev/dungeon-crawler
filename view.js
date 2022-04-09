@@ -21,7 +21,7 @@ var startButton = document.getElementById("start-button");
 var retryButton = document.getElementById("retry-button");
 var congratulationHeader = document.getElementById("endgame-header");
 var congratulationText = document.getElementById("endgame-text");
-
+var currentLevelText = document.getElementById("current-level-text");
 
 //music/SFX buttons, sounds
 var musicButton = document.getElementById("music-button");
@@ -36,3 +36,5 @@ var mainSound = document.getElementById("menuIntro");
 var isInMenu = true;
 var isInGame = false
 var isInRetry = false;
+
+var currentLevel = 1;

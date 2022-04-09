@@ -3,6 +3,7 @@ startButton.onclick = function() {startGame()};
 
 function startGame() {
     startButton.style.display = "none";
+    currentLevelText.style.display = "none";
 
     retryButton.style.display = "none";
     congratulationHeader.style.display = "none";

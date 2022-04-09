@@ -12,7 +12,6 @@ class Player extends Node {
     }
 
     move() {
-
         if(keys[87]) this.changePos(0, -100); //up
         else if(keys[65]) this.changePos(-100, 0); //left
         else if(keys[83]) this.changePos(0, 100); // down

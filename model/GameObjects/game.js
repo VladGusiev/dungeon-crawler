@@ -40,6 +40,9 @@ class Game extends Node {
 
         player.steps = 0;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        currentLevel++;
+
     }
 
     levelFailed() {

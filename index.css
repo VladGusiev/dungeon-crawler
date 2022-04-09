@@ -84,6 +84,14 @@ button {
     transform: translate(-50%);
 }
 
+#current-level-text {
+    position: absolute;
+    font-family: 'MedievalSharp', cursive;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 .title {
     font-size: 3em;
     font-weight: 700;
