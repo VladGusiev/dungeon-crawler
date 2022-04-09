@@ -14,30 +14,35 @@ function showHelpMenu() {
 
     //checking if we are in menu
     if(isInMenu) {
-        if(startButton.style.display === "block") {
+        if(!infoDisplayed) {
             startButton.style.display = "none";
             displayInfo();
+            infoDisplayed = true;
         } else {
             ctx.clearRect(helpMenuX, helpMenuY, helpMenuW, helpMenuH);
             startButton.style.display = "block";
+            infoDisplayed = false;
         }
     } else if(isInRetry) {
-        if(retryButton.style.display === "block") {
+        if(!infoDisplayed) {
             retryButton.style.display = "none";
             congratulationHeader.style.display = "none";
             congratulationText.style.display = "none";
             displayInfo();
+
+            infoDisplayed = true
         } else {
             ctx.clearRect(helpMenuX, helpMenuY, helpMenuW, helpMenuH);
             retryButton.style.display = "block";
             congratulationHeader.style.display = "block";
             congratulationText.style.display = "block";
+
+            infoDisplayed = false;
         }
     } else {
         if(infoDisplayed) {
             ctx.clearRect(helpMenuX, helpMenuY, helpMenuW, helpMenuH);
-            player.draw();
-            nextLevel.draw();
+            game.drawGameElements()
             infoDisplayed = false;
         } else {
             displayInfo();

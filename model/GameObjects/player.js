@@ -7,6 +7,8 @@ class Player extends Node {
         this.h = 100;   
 
         this.img = document.getElementById("player");
+
+        this.steps = 0;
     }
 
     move() {
@@ -29,15 +31,16 @@ class Player extends Node {
 
         //check if player proceed to next level
         if(this.x === nextLevel.x && this.y === nextLevel.y) {
-            levelProceed();
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            game.levelProceed();
         }
         
-        //randomstep sound
+        //random step sound
         let stepNumber = Math.floor(Math.random() * 3) + 1;
         if(!stopSFX) {
             document.getElementById(`step${stepNumber}`).play();
         }
+
+        this.steps++;
     }
 
     draw(){

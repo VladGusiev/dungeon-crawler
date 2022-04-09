@@ -14,7 +14,11 @@ class NextLevel extends Node {
     // }
 
     draw(){
-        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        if(!isInGame) {
+            ctx.clearRect(this.img, this.x, this.y, this.w, this.h);
+        } else {
+            ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        }
     }
 }
 

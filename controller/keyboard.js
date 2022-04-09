@@ -7,8 +7,7 @@ window.onkeydown = function(event) {
             keys[event.keyCode] = true;
         } else keys[event.keyCode] = false;
     
-        player.move();
-        nextLevel.draw();
+        game.playLoop();
     }
 }
 

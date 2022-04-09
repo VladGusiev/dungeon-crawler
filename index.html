@@ -31,8 +31,8 @@
         <button id="music-button">MUSIC</button>
         
         <!-- text for retry screen -->
-        <h1 id="complete-level-header">Congratulations</h1>
-        <p id="complete-level-text">You completed level!s</p>
+        <h1 id="endgame-header">Congratulation</h1>
+        <p id="endgame-text"></p>
     </p>
 
     <!-- menu/play soundtrack -->
@@ -45,6 +45,9 @@
     <audio id="step2" src="./music/steps/step2.wav" type="audio/wav"></audio>
     <audio id="step3" src="./music/steps/step3.wav" type="audio/wav"></audio>
 
+    <!-- levelProceed sound -->
+    <audio id="levelProceed" src="./music/sfx/levelProceed.wav" type="audio/wav"></audio>
+
 
     <script type="text/javascript" src="./view.js"></script>
     <script type="text/javascript" src="./buttons/help-button.js"></script>
@@ -55,5 +58,6 @@
     <script type="text/javascript" src="./model/node.js"></script>
     <script type="text/javascript" src="./model/GameObjects/player.js"></script>
     <script type="text/javascript" src="./model/GameObjects/nextLevel.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/game.js"></script>
 </body>
 </html>

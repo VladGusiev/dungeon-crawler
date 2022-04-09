@@ -66,19 +66,19 @@ button {
 }
 
 /* CONGRATULATION SCREEN TEXT*/
-#complete-level-header, #complete-level-text {
+#endgame-header, #endgame-text {
     display: none;
     position: absolute;
     font-family: 'MedievalSharp', cursive;
 }
 
-#complete-level-header {
+#endgame-header {
     top: 30%;
     left: 50%;
     transform: translate(-50%);
 }
 
-#complete-level-text {
+#endgame-text {
     top: 40%;
     left: 50%;
     transform: translate(-50%);
