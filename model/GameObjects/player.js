@@ -23,7 +23,7 @@ class Player extends Node {
         let newX = this.x + x;
         let newY = this.y + y;
         
-        if((0 <= newX && newX < canvas.width) && (0 <= newY && newY < canvas.height)) {
+        if((200<= newX && newX < (canvas.width-300)) && (100 <= newY && newY < (canvas.height-200))) {
             this.x = newX;
             this.y = newY;
         } 
@@ -44,7 +44,7 @@ class Player extends Node {
     }
 
     draw(){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
 }

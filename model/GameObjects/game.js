@@ -7,7 +7,7 @@ class Game extends Node {
 
     //temporarly
     generatePos() {
-        return Math.floor(Math.random()*9)*100+100;
+        return Math.floor(Math.random()*6)*100+300;
     }
 
     //temporarly here
@@ -98,9 +98,11 @@ class Game extends Node {
 
     playLoop() {
         if((this.movesAmount - player.steps) > 0) {
+            tile.draw();
             player.move();
 
             if(isInGame) {
+                ctx.clearRect(1300, 0, canvas.width, 50);
                 ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1300, 50);
             } else ctx.clearRect(1300, 0, canvas.width, 50);
              
@@ -111,6 +113,7 @@ class Game extends Node {
     }
 
     drawGameElements() {
+        tile.draw();
         player.draw();
 
         ctx.fillStyle = "black";
@@ -122,5 +125,5 @@ class Game extends Node {
 }
 
 var game = new Game(10);
-game.generatePos();
+// game.generatePos();
 
