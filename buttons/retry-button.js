@@ -4,7 +4,7 @@ retryButton.onclick = function() {restartGame()};
 function restartGame() {
     startButton.style.display = "block";
 
-    currentLevelText.innerHTML = `current level: ${currentLevel}`;
+    currentLevelText.innerHTML = `Current level: ${currentLevel}`;
     currentLevelText.style.display = "block";
 
     retryButton.style.display = "none";
