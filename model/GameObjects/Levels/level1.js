@@ -32,7 +32,21 @@ class Level1 extends Node {
         nextLevel.x = 600;
         nextLevel.y = 500;
 
+        runesCollection[0].x = 700;
+        runesCollection[0].y = 600;
+
+        runesCollection[1].x = 700;
+        runesCollection[1].y = 500;
+
+        runesCollection[2].x = 900;
+        runesCollection[2].y = 500;
+
+        runesCollection[3].x = 800;
+        runesCollection[3].y = 700;
+
         wallCollection = [];
+        runeSpotsCollection = [];
+
 
         //walls
         for(var i = 600; i<900; i+=100){
@@ -128,12 +142,26 @@ class Level1 extends Node {
             this.addObserver(b1);
         }
 
-
         for(let i in wallCollection) {
             if(wallCollection[i][0] == nextLevel.x && wallCollection[i][1] == nextLevel.y) wallCollection.splice(i, 1);
         }
-        // let index = wallCollection.indexOf([nextLevel.x, nextLevel.y]);
-        // wallCollection.pop(index);
+
+        var rs1 = new RuneSpot(500, 600);
+        this.addObserver(rs1);
+        runeSpotsCollection.push(rs1);
+
+        var rs1 = new RuneSpot(700, 300);
+        this.addObserver(rs1);
+        runeSpotsCollection.push(rs1);
+
+        var rs1 = new RuneSpot(1000, 500);
+        this.addObserver(rs1);
+        runeSpotsCollection.push(rs1);
+
+        var rs1 = new RuneSpot(800, 800);
+        this.addObserver(rs1);
+        runeSpotsCollection.push(rs1);
+
 
         this.notifyObservers();
         this.observerCollection = [];

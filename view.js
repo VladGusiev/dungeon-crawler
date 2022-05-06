@@ -37,6 +37,8 @@ var isInMenu = true;
 var isInGame = false
 var isInRetry = false;
 
+var allRunesPlaced = false;
+
 //keepinng track of positions of game objects;
 var wallCollection = [];
 var runesCollection = [];

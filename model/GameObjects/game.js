@@ -2,14 +2,13 @@ class Game extends Node {
     constructor(currentLevel) {
         super();
 
-        this.movesAmount = 10;
+        this.movesAmount = 14;
 
         this.currentLevel = currentLevel;
 
         this.observerCollection = [];
         this.inicializeLevel();
     }
-
 
     addObserver(level){
         this.observerCollection.push(level);
@@ -26,14 +25,8 @@ class Game extends Node {
         }
     }
 
-    //temporarly
-    generatePos() {
-        return Math.floor(Math.random()*6)*100+300;
-    }
-
     //temporarly here
     levelProceed() {
-
         isInMenu = false;
         isInGame = false;
         isInRetry = true;
@@ -45,6 +38,7 @@ class Game extends Node {
 
         congratulationText.innerHTML = `You completed level in ${player.steps} steps!`;
         congratulationText.style.display = "block";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
         if(!stopSFX) levelProceedSound.play();
@@ -122,16 +116,23 @@ class Game extends Node {
     }
 
     playLoop() {
+
         if((this.movesAmount - player.steps) > 0) {
-            // tile.draw();
             player.move();
 
             if(isInGame) {
                 ctx.clearRect(1250, 0, canvas.width, 90);
                 ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1250, 50);
             } else ctx.clearRect(1250, 0, canvas.width, 90);
-             
+
+            for(let i in runeSpotsCollection) {
+                runeSpotsCollection[i].draw();
+            }
+            
             nextLevel.draw();
+
+            allRunesPlaced = runeSpotsCollection.every(rs => rs.placedOn == true);
+            // console.log(allRunesPlaced);
         } else {
             this.levelFailed()
         }
@@ -146,16 +147,30 @@ class Game extends Node {
         this.notifyObservers();
         player.draw();
         nextLevel.draw();
+        for(let i in runesCollection) {
+            runesCollection[i].draw();
+        }
 
-        console.log(wallCollection);
+        for(let i in runeSpotsCollection) {
+            runeSpotsCollection[i].draw();
+        }
 
         this.observerCollection = [];
     }
 }
 
 //declaring of game needed game objects
+
+for(let i = 0; i < 10; i++) {
+    var r1 = new Rune(-1000,-1000);
+    runesCollection.push(r1);
+}
+
+const nextLevel = new NextLevel();
 const player = new Player();
 const game = new Game(1);
+
+
 
 //initial clear
 ctx.clearRect(0, 0, canvas.width, canvas.height);

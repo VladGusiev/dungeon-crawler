@@ -17,5 +17,3 @@ class NextLevel extends Node {
         }
     }
 }
-
-const nextLevel = new NextLevel();

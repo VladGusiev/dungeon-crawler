@@ -100,7 +100,7 @@ function displayInfo() {
     //Rune spot
     ctx.fillText('Rune Spot:', helpMenuX+420, helpMenuY+660);
     var runeSpotPic = new Image();
-    runeSpotPic.src = "./visual/runeSpot.png";
+    runeSpotPic.src = "./visual/runeSpot1.png";
     ctx.drawImage(runeSpotPic, helpMenuX+420, helpMenuY+660, 100, 100);
 
     //level exit
