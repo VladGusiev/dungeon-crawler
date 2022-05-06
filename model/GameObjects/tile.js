@@ -9,13 +9,12 @@ class Tile extends Node{
 
         this.img = document.getElementById("tile");
     }
-    //drawing of all tiles
+
+    notify() {
+        this.draw();
+    }
+
     draw() {
-        for(let i = 200; i < (canvas.width-300); i+=100) {
-            for(let j = 100; j < (canvas.width-600); j+=100) {
-                ctx.drawImage(this.img, i, j, this.w, this.h);
-            }
-        }
+        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
 }
-var tile = new Tile(100, 100);

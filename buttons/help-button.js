@@ -25,6 +25,7 @@ function showHelpMenu() {
             currentLevelText.style.display = "block";
             infoDisplayed = false;
         }
+        //on retry screen
     } else if(isInRetry) {
         if(!infoDisplayed) {
             retryButton.style.display = "none";
@@ -41,10 +42,15 @@ function showHelpMenu() {
 
             infoDisplayed = false;
         }
+        //in game
     } else {
         if(infoDisplayed) {
             ctx.clearRect(helpMenuX, helpMenuY, helpMenuW, helpMenuH);
-            game.drawGameElements()
+
+            player.steps = 0;
+            game.inicializeLevel();
+            ctx.fillText(`Steps Left: ${game.movesAmount - player.steps}`, 1250, 50);
+
             infoDisplayed = false;
         } else {
             displayInfo();

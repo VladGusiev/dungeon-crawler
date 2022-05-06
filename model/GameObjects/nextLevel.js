@@ -9,10 +9,6 @@ class NextLevel extends Node {
         this.img = document.getElementById("nextLevel");
     }
 
-    // notify(){
-    //     this.draw(ctx);
-    // }
-
     draw(){
         if(!isInGame) {
             ctx.clearRect(this.img, this.x, this.y, this.w, this.h);

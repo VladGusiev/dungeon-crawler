@@ -1,8 +1,7 @@
-class Player extends Node {
+class Player {
     constructor() {
-        super();
-        this.x = 300;
-        this.y = 300;
+        this.x = 100;
+        this.y = 100;
         this.w = 100;
         this.h = 100;   
 
@@ -12,20 +11,31 @@ class Player extends Node {
     }
 
     move() {
-        if(keys[87]) this.changePos(0, -100); //up
-        else if(keys[65]) this.changePos(-100, 0); //left
-        else if(keys[83]) this.changePos(0, 100); // down
-        else if (keys[68]) this.changePos(100, 0); // rightx
+        if(keys[87]) this.isAtWall(0, -100); //up
+        else if(keys[65]) this.isAtWall(-100, 0); //left
+        else if(keys[83]) this.isAtWall(0, 100); // down
+        else if (keys[68]) this.isAtWall(100, 0); // rightx
+    }
+
+    isAtWall(x, y) {
+
+        let newX = this.x + x;
+        let newY = this.y + y;
+
+        for(let i in wallCollection) {
+            if(wallCollection[i][0] == newX && wallCollection[i][1] == newY) return
+        }
+        this.changePos(newX, newY);
+
     }
 
     changePos(x, y) {
-        let newX = this.x + x;
-        let newY = this.y + y;
+
+        ctx.drawImage(document.getElementById("tile"), this.x, this.y, this.w, this.h);
         
-        if((200<= newX && newX < (canvas.width-300)) && (100 <= newY && newY < (canvas.height-200))) {
-            this.x = newX;
-            this.y = newY;
-        } 
+        this.x = x;
+        this.y = y;
+
         this.draw();
 
         //check if player proceed to next level
@@ -43,9 +53,6 @@ class Player extends Node {
     }
 
     draw(){
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
 }
-
-const player = new Player();

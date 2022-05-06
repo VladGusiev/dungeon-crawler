@@ -1,8 +1,29 @@
 class Game extends Node {
-    constructor(movesAmount) {
+    constructor(currentLevel) {
         super();
 
-        this.movesAmount = movesAmount;
+        this.movesAmount = 10;
+
+        this.currentLevel = currentLevel;
+
+        this.observerCollection = [];
+        this.inicializeLevel();
+    }
+
+
+    addObserver(level){
+        this.observerCollection.push(level);
+    }
+
+    removeObserver(level){
+        var index = this.observerCollection.indexOf(level);
+        delete this.observerCollection[index];
+    }
+
+    notifyObservers(){
+        for(var i in this.observerCollection){
+            this.observerCollection[i].notify();
+        }
     }
 
     //temporarly
@@ -12,6 +33,7 @@ class Game extends Node {
 
     //temporarly here
     levelProceed() {
+
         isInMenu = false;
         isInGame = false;
         isInRetry = true;
@@ -46,6 +68,7 @@ class Game extends Node {
     }
 
     levelFailed() {
+
         isInMenu = false;
         isInGame = false;
         isInRetry = true;
@@ -75,18 +98,17 @@ class Game extends Node {
     }
 
     startGame() {
+        player.steps = 0;
 
         isInMenu = false;
         isInGame = true;
         isInRetry = false;
 
-        player.x = this.generatePos();
-        player.y = this.generatePos();
+        this.inicializeLevel();
 
-        nextLevel.x = this.generatePos();
-        nextLevel.y = this.generatePos();
-
-        this.drawGameElements();
+        ctx.fillStyle = "black";
+        ctx.font = '50px MedievalSharp';
+        ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1250, 50);
 
         if(!stopMusic) {
             mainSound.pause();
@@ -101,13 +123,13 @@ class Game extends Node {
 
     playLoop() {
         if((this.movesAmount - player.steps) > 0) {
-            tile.draw();
+            // tile.draw();
             player.move();
 
             if(isInGame) {
-                ctx.clearRect(1300, 0, canvas.width, 50);
-                ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1300, 50);
-            } else ctx.clearRect(1300, 0, canvas.width, 50);
+                ctx.clearRect(1250, 0, canvas.width, 90);
+                ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1250, 50);
+            } else ctx.clearRect(1250, 0, canvas.width, 90);
              
             nextLevel.draw();
         } else {
@@ -115,18 +137,25 @@ class Game extends Node {
         }
     }
 
-    drawGameElements() {
-        tile.draw();
+    inicializeLevel(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (this.currentLevel === 1) {
+            var level1 = new Level1();
+            this.addObserver(level1);
+        }
+        this.notifyObservers();
         player.draw();
-
-        ctx.fillStyle = "black";
-        ctx.font = '40px MedievalSharp';
-        ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1300, 50);
-
         nextLevel.draw();
+
+        console.log(wallCollection);
+
+        this.observerCollection = [];
     }
 }
 
-var game = new Game(10);
-// game.generatePos();
+//declaring of game needed game objects
+const player = new Player();
+const game = new Game(1);
 
+//initial clear
+ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -16,6 +16,9 @@
     <img id="player" width="50" height="50" src="visual/player.png" hidden="true">
     <img id="nextLevel" width="50" height="50" src="visual/NextLevelWall.png" hidden="true">
     <img id="tile" width="50" height="50" src="visual/tile.png" hidden="true">
+    <img id="wall" width="50" height="50" src="visual/wall.png" hidden="true">
+    <img id="wall2" width="50" height="50" src="visual/wall1.png" hidden="true">
+    <img id="torch" width="50" height="50" src="visual/torch.png" hidden="true">
 
 
     <p class = "menu">
@@ -52,16 +55,31 @@
     <audio id="levelProceed" src="./music/sfx/levelProceed.wav" type="audio/wav"></audio>
 
 
+    <!-- objects -->
+    <script type="text/javascript" src="./model/node.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/tile.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/wall.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/player.js"></script>
+    <script type="text/javascript" src="./model/GameObjects/nextLevel.js"></script>
+    
+    <!-- levels -->
+    <script type="text/javascript" src="./model/GameObjects/Levels/level1.js"></script>
+
+    <!-- view -->
     <script type="text/javascript" src="./view.js"></script>
+
+    <!-- buttons -->
     <script type="text/javascript" src="./buttons/help-button.js"></script>
     <script type="text/javascript" src="./buttons/music-buttons.js"></script>
     <script type="text/javascript" src="./buttons/start-button.js"></script>
     <script type="text/javascript" src="./buttons/retry-button.js"></script>
+
+    <!-- controller -->
     <script type="text/javascript" src="./controller/keyboard.js"></script>
-    <script type="text/javascript" src="./model/node.js"></script>
-    <script type="text/javascript" src="./model/GameObjects/player.js"></script>
-    <script type="text/javascript" src="./model/GameObjects/nextLevel.js"></script>
+
+    <!-- main controlling script -->
     <script type="text/javascript" src="./model/GameObjects/game.js"></script>
-    <script type="text/javascript" src="./model/GameObjects/tile.js"></script>
+
+
 </body>
 </html>
