@@ -43,5 +43,3 @@ var allRunesPlaced = false;
 var wallCollection = [];
 var runesCollection = [];
 var runeSpotsCollection = [];
-
-var currentLevel = 1;

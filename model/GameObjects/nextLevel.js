@@ -1,6 +1,5 @@
-class NextLevel extends Node {
+class NextLevel {
     constructor() {
-        super();
         this.x = 600;
         this.y = 400;
         this.w = 100;

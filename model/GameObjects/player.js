@@ -34,9 +34,21 @@ class Player {
                 let xAfterRune = newX + x;
                 let yAfterRune = newY + y;
 
+                //if there is wall after rune
                 for(let j in wallCollection) {
                     if(wallCollection[j][0] == xAfterRune && wallCollection[j][1] == yAfterRune) return; 
                 }
+
+                //if there is 2 runes in a row
+                for(let h in runesCollection) {
+                    if(runesCollection[h].x == xAfterRune && runesCollection[h].y == yAfterRune) return; 
+                }
+
+                //if there is nextLevel after rune
+                if(nextLevel.x == xAfterRune && nextLevel.y == yAfterRune) return; 
+
+                if(runesCollection[i].placedOn) return;
+
                 runesCollection[i].move(direction);
             }
         }
@@ -48,6 +60,14 @@ class Player {
                 game.levelProceed();
                 return;
             } else return;
+        }
+
+        for(let i in runeSpotsCollection) {
+            if(newX === runeSpotsCollection[i].x && newY === runeSpotsCollection[i].y) {
+                runeSpotsCollection[i].playerOn = true;
+            } else {
+                runeSpotsCollection[i].playerOn = false;
+            }
         }
 
         this.changePos(newX, newY);

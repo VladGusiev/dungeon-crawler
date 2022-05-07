@@ -6,15 +6,19 @@ class Rune {
         this.w = 100;
         this.h = 100;
 
+        this.onPlace = false;
+
         this.img = document.getElementById("rune");
     }
 
 
     move(direction) {
-        if(direction == "up") this.isAtWall(0, -100); //up
-        else if(direction == "left") this.isAtWall(-100, 0); //left
-        else if(direction == "down") this.isAtWall(0, 100); // down
-        else if (direction == "right") this.isAtWall(100, 0); // right
+        if(!this.placedOn) {
+            if(direction == "up") this.isAtWall(0, -100); //up
+            else if(direction == "left") this.isAtWall(-100, 0); //left
+            else if(direction == "down") this.isAtWall(0, 100); // down
+            else if (direction == "right") this.isAtWall(100, 0); // right
+        }
         // console.log('run was moved');
     }
 
@@ -24,8 +28,13 @@ class Rune {
         let newY = this.y + y;
 
         for(let i in wallCollection) {
-            if(wallCollection[i][0] == newX && wallCollection[i][1] == newY) return
+            if(wallCollection[i][0] == newX && wallCollection[i][1] == newY) return;
         }
+
+        for(let j in runesCollection) {
+            if(runesCollection[j].x == newX && runesCollection[j].y == newY) return; 
+        }
+
         this.changePos(newX, newY);
 
     }
@@ -43,6 +52,7 @@ class Rune {
         for(let i in runeSpotsCollection) {
             if(this.x == runeSpotsCollection[i].x && this.y == runeSpotsCollection[i].y) {
                 runeSpotsCollection[i].placedOn = true;
+                this.placedOn = true;
             }
         }
 

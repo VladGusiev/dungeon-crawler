@@ -1,10 +1,10 @@
 class Game extends Node {
-    constructor(currentLevel) {
+    constructor() {
         super();
 
-        this.movesAmount = 14;
+        this.movesAmount;
 
-        this.currentLevel = currentLevel;
+        this.currentLevel = 3;
 
         this.observerCollection = [];
         this.inicializeLevel();
@@ -32,6 +32,7 @@ class Game extends Node {
         isInRetry = true;
 
         retryButton.style.display = "block";
+        retryButton.innerHTML = "Next Level";
 
         congratulationHeader.innerHTML = "Congratulation!";
         congratulationHeader.style.display = "block";
@@ -39,7 +40,6 @@ class Game extends Node {
         congratulationText.innerHTML = `You completed level in ${player.steps} steps!`;
         congratulationText.style.display = "block";
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
 
         if(!stopSFX) levelProceedSound.play();
 
@@ -57,7 +57,7 @@ class Game extends Node {
         player.steps = 0;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        currentLevel++;
+        this.currentLevel++;
 
     }
 
@@ -68,10 +68,10 @@ class Game extends Node {
         isInRetry = true;
 
         retryButton.style.display = "block";
+        retryButton.innerHTML = "Retry";
 
         congratulationHeader.innerHTML = "Nice Try!";
         congratulationHeader.style.display = "block";
-
 
         congratulationText.innerHTML = "you couldnt make it in needed amount of moves";
         congratulationText.style.display = "block";
@@ -139,28 +139,47 @@ class Game extends Node {
     }
 
     inicializeLevel(){
+        
+        for(let i in runesCollection) {
+            runesCollection[i].placedOn = false;
+            runesCollection[i].x = -1000;
+            runesCollection[i].y = -1000;
+        }
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
         if (this.currentLevel === 1) {
+            this.movesAmount = 10;
+            var level1 = new Level1();
+            this.addObserver(level1);
+        } else if (this.currentLevel === 2) {
+            this.movesAmount = 15;
+            var level1 = new Level2();
+            this.addObserver(level1);
+        } else if (this.currentLevel === 3) {
+            this.movesAmount = 40;
+            var level1 = new Level3();
+            this.addObserver(level1);
+        } else {
+            this.movesAmount = 10;
+            this.currentLevel = 1;
             var level1 = new Level1();
             this.addObserver(level1);
         }
+        
         this.notifyObservers();
+        
         player.draw();
         nextLevel.draw();
+        
         for(let i in runesCollection) {
             runesCollection[i].draw();
         }
-
-        for(let i in runeSpotsCollection) {
-            runeSpotsCollection[i].draw();
-        }
-
         this.observerCollection = [];
     }
 }
 
 //declaring of game needed game objects
-
 for(let i = 0; i < 10; i++) {
     var r1 = new Rune(-1000,-1000);
     runesCollection.push(r1);
@@ -169,8 +188,6 @@ for(let i = 0; i < 10; i++) {
 const nextLevel = new NextLevel();
 const player = new Player();
 const game = new Game(1);
-
-
 
 //initial clear
 ctx.clearRect(0, 0, canvas.width, canvas.height);
