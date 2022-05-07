@@ -44,11 +44,13 @@ class Player {
                     if(runesCollection[h].x == xAfterRune && runesCollection[h].y == yAfterRune) return; 
                 }
 
-                //if there is nextLevel after rune
+                //if there is 'nextLevel' after rune
                 if(nextLevel.x == xAfterRune && nextLevel.y == yAfterRune) return; 
 
+                //if there is runeSpot with rune on it
                 if(runesCollection[i].placedOn) return;
 
+                //if not we can move
                 runesCollection[i].move(direction);
             }
         }
@@ -56,12 +58,12 @@ class Player {
         //check if player proceed to next level
         if(newX === nextLevel.x && newY === nextLevel.y) {
             if(allRunesPlaced) {
-                // ctx.clearRect(0, 0, canvas.width, canvas.height);
                 game.levelProceed();
                 return;
             } else return;
         }
 
+        //if player will be located on runeSpot
         for(let i in runeSpotsCollection) {
             if(newX === runeSpotsCollection[i].x && newY === runeSpotsCollection[i].y) {
                 runeSpotsCollection[i].playerOn = true;
@@ -70,12 +72,13 @@ class Player {
             }
         }
 
+        //if no obstacles, can move
         this.changePos(newX, newY);
-
     }
 
     changePos(x, y) {
 
+        //draw tile where he was, so no duplicates will be left
         ctx.drawImage(document.getElementById("tile"), this.x, this.y, this.w, this.h);
         
         this.x = x;
@@ -88,7 +91,6 @@ class Player {
         if(!stopSFX) {
             document.getElementById(`step${stepNumber}`).play();
         }
-
         this.steps++;
     }
 

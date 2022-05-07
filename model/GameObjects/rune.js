@@ -9,6 +9,9 @@ class Rune {
         this.onPlace = false;
 
         this.img = document.getElementById("rune");
+
+        this.moveSound = document.getElementById("runeMoved");
+        this.moveSound.volume = 0.2;
     }
 
 
@@ -27,10 +30,12 @@ class Rune {
         let newX = this.x + x;
         let newY = this.y + y;
 
+        //wall check
         for(let i in wallCollection) {
             if(wallCollection[i][0] == newX && wallCollection[i][1] == newY) return;
         }
 
+        //runeSpot check
         for(let j in runesCollection) {
             if(runesCollection[j].x == newX && runesCollection[j].y == newY) return; 
         }
@@ -48,23 +53,20 @@ class Rune {
 
         this.draw();
 
-        //TODO check if rune is on rune spot
+        //check if rune is on rune spot
         for(let i in runeSpotsCollection) {
             if(this.x == runeSpotsCollection[i].x && this.y == runeSpotsCollection[i].y) {
                 runeSpotsCollection[i].placedOn = true;
                 this.placedOn = true;
+                if(!stopSFX) runeSpotsCollection[i].placedOnSound.play();
             }
         }
 
-        
         //move sound
         if(!stopSFX) {
-            document.getElementById('step1').play();
-        }
-
-        
+            this.moveSound.play();
+        }        
     }
-
 
     draw() {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);

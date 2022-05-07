@@ -28,9 +28,9 @@ var musicButton = document.getElementById("music-button");
 var sfxButton = document.getElementById("sfx-button");
 
 var levelProceedSound = document.getElementById("levelProceed");
+levelProceed.volume = 0.2;
 
 var mainSound = document.getElementById("menuIntro");
-
 
 //controlling game states
 var isInMenu = true;

@@ -4,7 +4,7 @@ class Game extends Node {
 
         this.movesAmount;
 
-        this.currentLevel = 3;
+        this.currentLevel = 1;
 
         this.observerCollection = [];
         this.inicializeLevel();
@@ -25,7 +25,7 @@ class Game extends Node {
         }
     }
 
-    //temporarly here
+    //move to congrat screen with statistic after level is completed
     levelProceed() {
         isInMenu = false;
         isInGame = false;
@@ -40,8 +40,6 @@ class Game extends Node {
         congratulationText.innerHTML = `You completed level in ${player.steps} steps!`;
         congratulationText.style.display = "block";
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        if(!stopSFX) levelProceedSound.play();
 
         //change soundtrack
         if(!stopMusic) {
@@ -58,9 +56,9 @@ class Game extends Node {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         this.currentLevel++;
-
     }
 
+    //if player fails to complete level, move to retry screen
     levelFailed() {
 
         isInMenu = false;
@@ -91,6 +89,7 @@ class Game extends Node {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    //start of game
     startGame() {
         player.steps = 0;
 
@@ -98,12 +97,15 @@ class Game extends Node {
         isInGame = true;
         isInRetry = false;
 
+        //drawing of level itself
         this.inicializeLevel();
 
+        //steps counter
         ctx.fillStyle = "black";
         ctx.font = '50px MedievalSharp';
         ctx.fillText(`Steps Left: ${this.movesAmount - player.steps}`, 1250, 50);
 
+        //music
         if(!stopMusic) {
             mainSound.pause();
             mainSound = document.getElementById("playLoop");
@@ -115,8 +117,8 @@ class Game extends Node {
         }
     }
 
+    //main game loop
     playLoop() {
-
         if((this.movesAmount - player.steps) > 0) {
             player.move();
 
@@ -131,23 +133,28 @@ class Game extends Node {
             
             nextLevel.draw();
 
+            //check for main game purpose
             allRunesPlaced = runeSpotsCollection.every(rs => rs.placedOn == true);
+            if(allRunesPlaced) if(!stopSFX) levelProceedSound.play();
             // console.log(allRunesPlaced);
         } else {
             this.levelFailed()
         }
     }
 
+    //drawing of level
     inicializeLevel(){
-        
+        //reset positions of all runes ti later let levels determine their position
         for(let i in runesCollection) {
             runesCollection[i].placedOn = false;
             runesCollection[i].x = -1000;
             runesCollection[i].y = -1000;
         }
 
+        //clearing all garbage before drawing
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        //determining whch level to draw
         if (this.currentLevel === 1) {
             this.movesAmount = 10;
             var level1 = new Level1();
@@ -167,8 +174,10 @@ class Game extends Node {
             this.addObserver(level1);
         }
         
+        //notifying level to draw itself (new levels are added here)
         this.notifyObservers();
         
+        //drawing other game objects
         player.draw();
         nextLevel.draw();
         

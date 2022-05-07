@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Document</title>
+    <title>Dungeon Crawler</title>
 
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <p class="title">Dungeon Crawler</p>
 
-    <!-- visulas -->
+    <!-- VISUALS -->
     <img id="player" width="50" height="50" src="visual/player.png" hidden="true">
     <img id="nextLevel" width="50" height="50" src="visual/NextLevelWall.png" hidden="true">
     <img id="tile" width="50" height="50" src="visual/tile.png" hidden="true">
@@ -46,6 +46,8 @@
         <p id="current-level-text">Current level: 1</p>
     </p>
 
+    <!-- SOUND -->
+
     <!-- menu/play soundtrack -->
     <audio id="menuIntro" src="./music/menuIntro.wav" type="audio/wav" onended="menuIntroEnded()"></audio>
     <audio id="menuLoop" src="./music/menuLoop.wav" loop type="audio/wav"></audio>
@@ -59,6 +61,11 @@
     <!-- levelProceed sound -->
     <audio id="levelProceed" src="./music/sfx/levelProceed.wav" type="audio/wav"></audio>
 
+    <audio id="runePlaced" src="./music/sfx/runePlaced.wav" type="audio/wav"></audio>
+
+    <audio id="runeMoved" src="./music/sfx/moveStone.wav" type="audio/wav"></audio>
+
+    <!-- SCRIPT -->
 
     <!-- objects -->
     <script type="text/javascript" src="./model/node.js"></script>
@@ -73,8 +80,6 @@
     <script type="text/javascript" src="./model/GameObjects/Levels/level1.js"></script>
     <script type="text/javascript" src="./model/GameObjects/Levels/level2.js"></script>
     <script type="text/javascript" src="./model/GameObjects/Levels/level3.js"></script>
-
-
 
     <!-- view -->
     <script type="text/javascript" src="./view.js"></script>

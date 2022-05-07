@@ -146,7 +146,7 @@ class Level2 extends Node {
             if(wallCollection[i][0] == nextLevel.x && wallCollection[i][1] == nextLevel.y) wallCollection.splice(i, 1);
         }
 
-        var rs1 = new RuneSpot(600, 600);
+        var rs1 = new RuneSpot(500, 600);
         this.addObserver(rs1);
         runeSpotsCollection.push(rs1);
 
